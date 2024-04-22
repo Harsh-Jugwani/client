@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { X } from "lucide-react";
+import { X } from "lucide-react";//use for cross symbol
 
-interface BoardFormProps {
+interface BoardFormProps {// defining type of data
   onClose: () => void;
   data: any;
   title: string;
@@ -30,11 +30,11 @@ const BoardForm: React.FC<BoardFormProps> = ({
     name: "",
   });
 
-  const handleAdd = () => {
+  const handleAdd = () => {//For handling the add input area
     const value = [...val, ""];
     setVal(value);
   };
-
+  //handling the dynamic input change
   const handleChange = (onChangeVal: React.ChangeEvent<HTMLInputElement>, i: number) => {
     const inputData = [...val];
     inputData[i] = onChangeVal.target.value;
@@ -42,17 +42,17 @@ const BoardForm: React.FC<BoardFormProps> = ({
     setRes(data);
     setVal(inputData);
   };
-
+  // handle delete of the text area
   const handleDelete = (i: number) => {
     const deleteVal = [...val];
     deleteVal.splice(i, 1);
     setVal(deleteVal);
   };
 
-  const closeModel = (e: React.MouseEvent<HTMLDivElement>) => {
+  const closeModel = (e: React.MouseEvent<HTMLDivElement>) => {//Closing the form when someone click other than form area
     if (modelRef.current === e.target) onClose();
   };
-
+  // handle the submitting of form
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onClose();
@@ -66,7 +66,7 @@ const BoardForm: React.FC<BoardFormProps> = ({
       },
     ]);
   };
-
+  // handling the input array of specific column
   const handleRes = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setInputs((values) => ({ ...values, [name]: value }));

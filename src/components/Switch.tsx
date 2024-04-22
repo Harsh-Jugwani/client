@@ -20,7 +20,7 @@ const Switch: React.FC = () => {
       document.body.classList.remove('dark');
     }
   }, [darkMode]);
-
+  // For Toggling Purpose
   const toggleMode = () => {
     setDarkMode((prevMode:any) => !prevMode);
   };

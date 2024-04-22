@@ -17,11 +17,11 @@ interface SubTaskFormProps {
 const SubTaskForm: React.FC<SubTaskFormProps> = ({ data, columnName, onClose }) => {
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
   const [showSubTaskForm, setShowSubTaskForm] = useState(false);
-  const [status, setStatus] = useState('TODO');
   const { key, alldata, updateData } = useMyContext();
-  const modelRef = useRef<HTMLDivElement>(null);
+  const [status, setStatus] = useState(alldata[key-1]?.columns[0]?.name);//getting default status of data
+  const modelRef = useRef<HTMLDivElement>(null);//ref. to entire comp.
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {//to handle the multiple checkbox input
     const value = event.target.value;
     const isChecked = event.target.checked;
 
@@ -31,18 +31,18 @@ const SubTaskForm: React.FC<SubTaskFormProps> = ({ data, columnName, onClose }) 
       setCheckedItems(checkedItems.filter((item) => item !== value));
     }
   };
-
+   // For Closing the form when someone click other than form area.
   const closeModel = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modelRef.current === e.target) onClose();
   };
-
+  //To handle the form submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onClose();
 
-    let dummy = [...alldata];
+    let dummy = [...alldata];//Creating the copy of original data
     let doneColumn = dummy[key - 1].columns.filter((column) => column.name === columnName);
-    let cleanYourRoomSubtask = doneColumn[0].subTasks.filter((subTask) => subTask.Title === data.Title);
+    let filterSubtask = doneColumn[0].subTasks.filter((subTask) => subTask.Title === data.Title);
     let s = doneColumn[0].subTasks.findIndex((subTask) => subTask.Title === data.Title);
     const ReplaceCol = dummy[key - 1].columns.filter((column) => column.name === status);
     let result = data.subTask.filter((x) => !checkedItems.includes(x));
@@ -52,14 +52,14 @@ const SubTaskForm: React.FC<SubTaskFormProps> = ({ data, columnName, onClose }) 
       subTask: result,
       status: status,
     };
-    cleanYourRoomSubtask[0] = res;
+    filterSubtask[0] = res;//manipulating the data
 
     if (status !== columnName) {
       ReplaceCol[0].subTasks.push(res);
       doneColumn[0].subTasks.splice(s, 1);
     }
 
-    updateData([...dummy]);
+    updateData([...dummy]);//Updating the original data
   };
 
   return (

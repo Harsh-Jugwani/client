@@ -17,8 +17,8 @@ const MainContainer: React.FC = () => {
   const [data, setData] = useState<any>(); // You might want to replace `any` with a more specific type
   const { key, alldata } = useMyContext();
   const [edit, setEditForm] = useState<boolean>(false);
-
-  const handleClick = (val: any, e: Column) => {
+  
+  const handleClick = (val: any, e: Column) => {//setting the state 
     setColumnName(e.name);
     setData(val);
     setIsClicked(true);

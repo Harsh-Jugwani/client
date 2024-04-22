@@ -6,7 +6,7 @@ import Menu from "./Menu";
 import { useMyContext } from "../App";
 
 const Header: React.FC = () => {
-  const { key, alldata } = useMyContext();
+  const { key, alldata } = useMyContext();//getting the data from App.tsx with useContext
 
   const [showTaskForm, setShowTaskForm] = useState(false);
   const [menu, setMenu] = useState(false);

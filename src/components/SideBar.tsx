@@ -8,26 +8,31 @@ import MainContainer from "./MainContainer";
 import { useMyContext } from "../App";
 import BoardIcon from "../utils/BoardIcon.svg";
 
-const SideBar = () => {
-  const { updateValue, key, alldata, updateData } = useMyContext();
-  const [highlightedIndex, setHighlightedIndex] = useState(1);
-  const [toggle, setToggle] = useState(true);
-  const [showBoardForm, setShowBoardForm] = useState(false);
+interface Board {
+  id: number;
+  name: string;
+}
 
-  const handleDivClick = (index) => {
+const SideBar: React.FC = () => {
+  const { updateValue, key, alldata, updateData } = useMyContext();
+  const [highlightedIndex, setHighlightedIndex] = useState<number>(1);
+  const [toggle, setToggle] = useState<boolean>(true);
+  const [showBoardForm, setShowBoardForm] = useState<boolean>(false);
+  // To heighlight the specific board when click on...
+  const handleDivClick = (index: number) => {
     setHighlightedIndex(index);
   };
 
   return (
     <>
-      {toggle && (
+      {toggle && (// when toggle is true then means sidebar is expanded
         <div className=" dark:bg-[#2B2C37] w-[300px] bg-[#FFFFFF] h-screen rounded-sm border border-l-[#E4EBFA] dark:border-gray-700  ">
           <div className="">
             <h1 className="text-[#828FA3] text-[15px] ml-[32px] mb-2 p-2">
               ALL BOARDS ({alldata.length})
             </h1>
             {alldata &&
-              alldata.map((e) => {
+              alldata.map((e: Board) => {
                 return (
                   <div
                     id="mainColor"
@@ -66,7 +71,7 @@ const SideBar = () => {
           </button>
         </div>
       )}
-      {!toggle && (
+      {!toggle && (//When Toggle is false means collapsing the side bar
         <button
           onClick={() => setToggle(!toggle)}
           className="absolute bg-[#635FC7] flex bottom-7 w-[56px] h-[48px] rounded-r-3xl"
@@ -77,7 +82,7 @@ const SideBar = () => {
       )}
       {showBoardForm && (
         <BoardForm
-          setAllData={updateData}
+          setAllData={()=>[...alldata]}
           alldata={alldata}
           onClose={() => setShowBoardForm(false)}
           data=""
@@ -91,3 +96,4 @@ const SideBar = () => {
 };
 
 export default SideBar;
+

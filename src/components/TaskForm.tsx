@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { X } from 'lucide-react';
-import { useMyContext } from '../App';
+import { X } from 'lucide-react';//cross symbol
+import { useMyContext } from '../App';//context of central data
 
 interface TaskFormProps {
   onClose: () => void;
@@ -14,12 +14,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ onClose }) => {
   const [status, setStatus] = useState<string>(temp[key - 1].columns[0].name);
   const [val, setVal] = useState<string[]>([]);
   const modelRef = useRef<HTMLDivElement>(null);
-
+  //  To add the value 
   const handleAdd = () => {
     const value = [...val, ''];
     setVal(value);
   };
-
+   
   const handleChange = (onChangeVal: React.ChangeEvent<HTMLInputElement>, i: number) => {
     const inputData = [...val];
     inputData[i] = onChangeVal.target.value;
@@ -31,11 +31,11 @@ const TaskForm: React.FC<TaskFormProps> = ({ onClose }) => {
     deleteVal.splice(i, 1);
     setVal(deleteVal);
   };
-
+  // To close a form when someone click other than form area.
   const closeModel = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modelRef.current === e.target) onClose();
   };
-
+  // Action after submitting the code
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onClose();
@@ -47,9 +47,9 @@ const TaskForm: React.FC<TaskFormProps> = ({ onClose }) => {
       status: status,
     };
 
-    let v = temp[key - 1].columns.findIndex((subTask) => subTask.name === status);
-    temp[key - 1].columns[v].subTasks.push(res);
-    updateData([...temp]);
+    let index = temp[key - 1].columns.findIndex((subTask) => subTask.name === status);//finding index of column having given status name
+    temp[key - 1].columns[index].subTasks.push(res);
+    updateData([...temp]);//Updating the original data
   };
 
   return (

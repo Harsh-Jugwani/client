@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { X } from "lucide-react";
 import { useMyContext } from "../App";
 
-interface BoardModificationProps {
+interface BoardModificationProps {// defining type of data
   onClose: () => void;
   Title: string;
   Para: string;
@@ -21,7 +21,7 @@ const BoardModification: React.FC<BoardModificationProps> = ({
   const closeModel = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (modelRef.current === e.target) onClose();
   };
-  const handleAction = (action: string) => {
+  const handleAction = (action: string) => {//handling Action of specific input
     const dumy = [...alldata];
     onClose();
 
@@ -34,7 +34,7 @@ const BoardModification: React.FC<BoardModificationProps> = ({
       updateData([...dumy]);
     }
     if (action === "Reset") {
-      window.location.reload();
+      window.location.reload();//for reset the page.
     }
   };
   return (

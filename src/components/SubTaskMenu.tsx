@@ -7,8 +7,8 @@ interface SubTaskMenuProps {
 
 const SubTaskMenu: React.FC<SubTaskMenuProps> = ({ onClose }) => {
   const [showTaskiForm, setShowTaskiForm] = useState(false);
-  const modelRef = useRef<HTMLDivElement>(null);
-
+  const modelRef = useRef<HTMLDivElement>(null);//getting ref. of entire comp.
+  // For Closing the form when someone click other than form area.
   const closeModel = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modelRef.current === e.target) onClose();
   };
