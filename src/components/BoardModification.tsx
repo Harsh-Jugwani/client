@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { X } from "lucide-react";
-import { useMyContext } from "../App";
+import {useMyContext} from "../App";
 
 interface BoardModificationProps {// defining type of data
   onClose: () => void;
