@@ -3,7 +3,7 @@ import logo from "../utils/Group 15.svg";
 import threeDot from "../utils/Group 5.svg";
 import TaskForm from "./TaskForm";
 import Menu from "./Menu";
-import { useMyContext } from "../App";
+import {useMyContext} from "../App";
 
 const Header: React.FC = () => {
   const { key, alldata } = useMyContext();//getting the data from App.tsx with useContext
