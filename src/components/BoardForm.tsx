@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { X } from "lucide-react";//use for cross symbol
+import {X} from "lucide-react";//use for cross symbol
 
 interface BoardFormProps {// defining type of data
   onClose: () => void;
