@@ -5,7 +5,7 @@ import noteIcon from "../utils/fluent_board-split-24-regular.svg";
 import BoardForm from "./BoardForm";
 import Switch from "./Switch";
 import MainContainer from "./MainContainer";
-import { useMyContext } from "../App";
+import { useMyContext} from "../App";
 import BoardIcon from "../utils/BoardIcon.svg";
 
 interface Board {
