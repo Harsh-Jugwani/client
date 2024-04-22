@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BoardForm from "./BoardForm";
-import { useMyContext } from "../App";
+import {useMyContext} from "../App";
 import SubTaskForm from "./SubTaskForm";
 
 interface Column {
