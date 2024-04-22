@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { X } from 'lucide-react';//cross symbol
-import { useMyContext } from '../App';//context of central data
+import {useMyContext} from '../App';//context of central data
 
 interface TaskFormProps {
   onClose: () => void;
