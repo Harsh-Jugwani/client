@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import sun from '../utils/sun2.svg';
 import moon from '../utils/Combined Shape.svg';
 
