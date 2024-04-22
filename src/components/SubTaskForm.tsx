@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useMyContext } from '../App';
-import { X} from 'lucide-react';
+import {X} from 'lucide-react';
 import threeDot from '../utils/Group 5.svg';
 import SubTaskMenu from './SubTaskMenu';
 
